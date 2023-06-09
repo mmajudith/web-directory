@@ -1,14 +1,16 @@
-import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-// import { toast } from 'react-toastify';
 import { postData } from '@/dataFetching/dataFetching';
 
 import FormOTPInput from '@/components/reuseableComp/FormOTPInput';
 import Button from '@/components/reuseableComp/Button';
 
-const OTPConfirm = ({ email, handleResendEmail }) => {
-	const router = useRouter();
-
+const OTPConfirm = ({
+	email,
+	handleResendEmail,
+	setOTP,
+	setSendOTP,
+	setResetPass,
+}) => {
 	const [disable, setDisable] = useState(false);
 	const [otpNumber, setOTPNumber] = useState({
 		firstDigit: '',
@@ -32,13 +34,16 @@ const OTPConfirm = ({ email, handleResendEmail }) => {
 		e.preventDefault();
 
 		const otp = Object.values(otpNumber).join('');
+		setOTP(otp);
+		const details = { email, otp };
 
 		setDisable(true);
 		try {
-			const comfirmOtp = await postData('auth/email/verify', { otp });
+			const comfirmOtp = await postData('auth/password/verify', { ...details });
 			console.log(comfirmOtp);
 			alert('OTP confirmed.');
-			router.push('/reset-password');
+			setSendOTP(false);
+			setResetPass(true);
 		} catch (error) {
 			console.log(error, 'err confirming otp');
 			setDisable(false);

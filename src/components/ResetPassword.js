@@ -1,20 +1,17 @@
-'use client';
-
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { postData } from '@/dataFetching/dataFetching';
-// import { toast } from 'react-toastify';
 import FormPasswordInput from '@/components/reuseableComp/FormPasswordInput';
 import Button from '@/components/reuseableComp/Button';
 
-export default function ResetPassword() {
+const ResetPassword = ({ otp, email }) => {
 	const router = useRouter();
 
 	const [disable, setDisable] = useState(false);
 	const [resetPassword, setResetPassword] = useState({
-		old_password: '',
-		new_password: '',
+		password: '',
+		confrim_password: '',
 	});
 
 	//Handling all the inputs change
@@ -29,10 +26,13 @@ export default function ResetPassword() {
 	const handleResetSubmit = async (e) => {
 		e.preventDefault();
 
+		const { password } = resetPassword;
+		const details = { otp, email, password };
 		setDisable(true);
+
 		try {
-			const changedPassword = await postData('auth/password/change', {
-				...resetPassword,
+			const changedPassword = await postData('auth/password/reset', {
+				...details,
 			});
 			console.log(changedPassword);
 
@@ -57,15 +57,15 @@ export default function ResetPassword() {
 					<p className="text-sm text-[#686868]">Set your new password</p>
 				</div>
 				<FormPasswordInput
-					id={'old_password'}
-					value={resetPassword.old_password}
+					id={'password'}
+					value={resetPassword.password}
 					handleChange={(e) => handleChange(e)}
 					forLabel={'Enter new password'}
 				/>
 
 				<FormPasswordInput
-					id={'new_password'}
-					value={resetPassword.new_password}
+					id={'confrim_password'}
+					value={resetPassword.confrim_password}
 					handleChange={(e) => handleChange(e)}
 					forLabel={'Re-enter new password'}
 				/>
@@ -83,4 +83,6 @@ export default function ResetPassword() {
 			</form>
 		</main>
 	);
-}
+};
+
+export default ResetPassword;

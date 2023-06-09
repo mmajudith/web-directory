@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { postData } from '@/dataFetching/dataFetching';
-// import { toast } from 'react-toastify';
 import SignUpType from '@/components/SignUpType';
 import FormInput from '@/components/reuseableComp/FormInput';
 import FormPasswordInput from '@/components/reuseableComp/FormPasswordInput';

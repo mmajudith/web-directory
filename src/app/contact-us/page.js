@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { postData } from '@/dataFetching/dataFetching';
-import { toast } from 'react-toastify';
 
 import Card from '@/components/reuseableComp/Card';
 import FormInput from '@/components/reuseableComp/FormInput';

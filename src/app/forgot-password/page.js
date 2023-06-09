@@ -3,29 +3,32 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { postData } from '@/dataFetching/dataFetching';
-// import { toast } from 'react-toastify';
 import FormInput from '@/components/reuseableComp/FormInput';
 import Button from '@/components/reuseableComp/Button';
 import OTPSentSuccess from '@/components/OTPSentSuccess';
 import OTPConfirm from '@/components/OTPConfirm';
+import ResetPassword from '@/components/ResetPassword';
 
 export default function ForgotPassword() {
 	const [disable, setDisable] = useState(false);
-	const [otp, setOTP] = useState(false);
+	const [otp, setOTP] = useState('');
+	const [sendOTP, setSendOTP] = useState(false);
 	const [sendEmail, setSendEmail] = useState(false);
 	const [forPassword, setForPassword] = useState(true);
+	const [resetPass, setResetPass] = useState(false);
 	const [email, setEmail] = useState('');
 
 	//Resend email handler
 	const handleResendEmail = () => {
-		setOTP(false);
+		setSendOTP(false);
 		setSendEmail(false);
 		setForPassword(true);
+		setResetPass(false);
 	};
 
 	//Display confirmotp component for otp confirm
 	const handleNext = () => {
-		setOTP(true);
+		setSendOTP(true);
 		setSendEmail(false);
 		setForPassword(false);
 	};
@@ -51,11 +54,19 @@ export default function ForgotPassword() {
 
 	return (
 		<main className="w-full h-fit mx-auto mt-20">
-			{otp && (
-				<OTPConfirm email={email} handleResendEmail={handleResendEmail} />
+			{sendOTP && (
+				<OTPConfirm
+					email={email}
+					handleResendEmail={handleResendEmail}
+					setOTP={setOTP}
+					setSendOTP={setSendOTP}
+					setResetPass={setResetPass}
+				/>
 			)}
 
 			{sendEmail && <OTPSentSuccess email={email} handleNext={handleNext} />}
+
+			{resetPass && <ResetPassword otp={otp} email={email} />}
 
 			{forPassword && (
 				<form
