@@ -31,7 +31,7 @@ export default async function Pricing() {
 						Features Overview
 					</p>
 
-					<FeaturesService data={data} />
+					{data && <FeaturesService data={data} />}
 				</div>
 			</div>
 		</main>
