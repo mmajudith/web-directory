@@ -23,10 +23,13 @@ const OTPConfirm = ({
 
 	//Handling all the inputs change
 	const handleChange = (e) => {
+		let element = e.target;
+		let nextSibling = element.nextElementSibling;
 		let temp = { ...otpNumber };
 		temp[e.target.id] = e.target.value;
 
 		setOTPNumber(temp);
+		nextSibling ? nextSibling.focus() : element.blur;
 	};
 
 	//Comfirm OTP submit function

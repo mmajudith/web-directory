@@ -6,6 +6,8 @@ const FormOTPInput = ({ id, type, value, handleChange }) => {
 			value={value}
 			onChange={handleChange}
 			id={id}
+			maxLength={1}
+			autoFocus={true}
 		/>
 	);
 };
