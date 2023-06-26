@@ -24,7 +24,7 @@ const Footer = () => {
 				<Social />
 
 				<div className="w-full flex flex-col-reverse sm:flex-row items-start sm:items-center gap-3 sm:gap-16 mt-8 sm:mt-3">
-					<p className="text-white text-base">© 2022 Dutiful®</p>
+					<p className="text-white text-base">© 2023 Dutiful®</p>
 					<div className="text-[#B6B6E5] flex gap-2 sm:gap-5 text-sm">
 						<p>Terms of Service</p>
 						<p>Privacy policy</p>
