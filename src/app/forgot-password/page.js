@@ -5,9 +5,9 @@ import { useState } from 'react';
 import { postData } from '@/dataFetching/dataFetching';
 import FormInput from '@/components/reuseableComp/FormInput';
 import Button from '@/components/reuseableComp/Button';
-import OTPSentSuccess from '@/components/OTPSentSuccess';
-import OTPConfirm from '@/components/OTPConfirm';
-import ResetPassword from '@/components/ResetPassword';
+import OTPSentSuccess from '@/app/forgot-password/OTPSentSuccess';
+import OTPConfirm from '@/app/forgot-password/OTPConfirm';
+import ResetPassword from '@/app/forgot-password/ResetPassword';
 
 export default function ForgotPassword() {
 	const [disable, setDisable] = useState(false);
@@ -71,9 +71,9 @@ export default function ForgotPassword() {
 			{forPassword && (
 				<form
 					onSubmit={handleSubmit}
-					className="w-[486px] h-fit m-auto flex flex-col justify-center items-center"
+					className="w-11/12 sm:w-[486px] h-fit m-auto flex flex-col justify-center items-center"
 				>
-					<div className="w-full mb-9">
+					<div className="w-full mb-8 xs:mb-9">
 						<Link href="/login">
 							<img
 								src="/assets/back-arrow.png"
@@ -83,7 +83,7 @@ export default function ForgotPassword() {
 						</Link>
 					</div>
 
-					<div className="w-full mb-9">
+					<div className="w-full mb-8 xs:mb-9">
 						<p className="font-semibold text-3xl text-[#1E1E4B] mb-3">
 							Forgot password
 						</p>

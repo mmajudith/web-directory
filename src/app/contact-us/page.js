@@ -5,7 +5,7 @@ import { postData } from '@/dataFetching/dataFetching';
 
 import Card from '@/components/reuseableComp/Card';
 import FormInput from '@/components/reuseableComp/FormInput';
-import FormTextArea from '@/components/FormTextArea';
+import FormTextArea from '@/components/reuseableComp/FormTextArea';
 import Button from '@/components/reuseableComp/Button';
 
 export default function ContactUs() {
@@ -43,17 +43,22 @@ export default function ContactUs() {
 	};
 
 	return (
-		<main className="w-full h-fit mx-auto">
-			<div className="w-full h-64 m-auto pt-10 text-center bg-[url('/assets/contact-bg.png')] bg-repeat bg-fill bg-purple-dark relative z-0">
-				<p className="font-semibold text-3xl text-white mb-3">Get in touch</p>
-				<p className="text-[#EDDFFF] text-lg">
+		<main className="w-full h-fit mx-auto mt-5 md:mt-0">
+			<div className="w-full h-64 m-auto px-3 pt-10 text-center bg-[url('/assets/contact-bg.png')] bg-repeat bg-fill bg-purple-dark relative z-0">
+				<p className="font-semibold text-[27px] xs:text-3xl text-white mb-3">
+					Get in touch
+				</p>
+				<p className="text-[#EDDFFF] text-base xs:text-lg">
 					We are here to support you throughout the process of getting your
 					business listed.
 				</p>
 			</div>
 
-			<div className="max-w-[1440px] h-fit w-11/12 mx-auto relative top-[-83px] z-10">
-				<div className="w-full flex justify-between gap-9">
+			<div className="max-w-[1440px] w-[95%] xl:w-11/12 h-fit mx-auto relative top-[-83px] z-10">
+				<div
+					className="w-full flex flex-col xs:flex-row justify-center xs:justify-between 
+					 			items-center xs:items-baseline gap-3 lg:gap-9"
+				>
 					<Card
 						title={'Customer support'}
 						descriptions={'Please fill out the form below'}
@@ -66,7 +71,7 @@ export default function ContactUs() {
 					/>
 					<Card
 						title={'Phone number'}
-						descriptions={'+234 903 921 6724'}
+						descriptions={'+234 907 229 9413'}
 						imgIcon={'/assets/call-calling.png'}
 					/>
 				</div>
@@ -74,7 +79,7 @@ export default function ContactUs() {
 
 			<form
 				onSubmit={handleSubmit}
-				className="w-[486px] h-fit m-auto mt-3 flex flex-col justify-center items-center gap-7"
+				className="w-11/12 sm:w-[486px] h-fit m-auto mt-3 flex flex-col justify-center items-center gap-7"
 			>
 				<FormInput
 					id={'name'}

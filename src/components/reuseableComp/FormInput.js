@@ -17,7 +17,7 @@ const FormInput = ({
 			</label>
 
 			<input
-				className="w-full h-12 pl-5 bg-[#F8FAFD] outline-none border border-solid border-[#E7EAF1] rounded-md"
+				className="w-full h-10 xs:h-12 pl-5 bg-[#F8FAFD] outline-none border border-solid border-[#E7EAF1] rounded-md"
 				type={type}
 				value={value}
 				onChange={handleChange}
@@ -28,7 +28,11 @@ const FormInput = ({
 				<img
 					src={imgIcon}
 					alt="icon"
-					className="absolute right-5 top-12 cursor-pointer"
+					className={`absolute right-5 ${
+						id === 'subject'
+							? `top-[44px] xs:top-12`
+							: `top-[38px] xs:top-[41px] `
+					} cursor-pointer`}
 				/>
 			)}
 		</div>

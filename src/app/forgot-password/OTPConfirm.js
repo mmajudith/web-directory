@@ -54,12 +54,12 @@ const OTPConfirm = ({
 	};
 
 	return (
-		<main className="w-full h-fit mx-auto mt-20">
+		<>
 			<form
 				onSubmit={handleComfirmOTP}
-				className="w-[486px] h-fit m-auto flex flex-col justify-center items-center"
+				className="w-11/12 sm:w-[486px] h-fit m-auto flex flex-col justify-center items-center"
 			>
-				<div className="w-[70%] flex justify-between">
+				<div className="w-11/12 sm:w-[70%] flex justify-between gap-2 sm:gap-0">
 					<FormOTPInput
 						id={'firstDigit'}
 						type={'text'}
@@ -117,7 +117,7 @@ const OTPConfirm = ({
 					</p>
 				</div>
 			</form>
-		</main>
+		</>
 	);
 };
 

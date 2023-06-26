@@ -45,10 +45,10 @@ const ResetPassword = ({ otp, email }) => {
 	};
 
 	return (
-		<main className="w-full h-fit mx-auto mt-20">
+		<>
 			<form
 				onSubmit={handleResetSubmit}
-				className="w-[486px] h-fit m-auto flex flex-col justify-center items-center gap-4"
+				className="w-11/12 sm:w-[486px] h-fit m-auto flex flex-col justify-center items-center gap-4"
 			>
 				<div className="w-full mb-5">
 					<p className="font-semibold text-3xl text-[#1E1E4B] mb-3">
@@ -81,7 +81,7 @@ const ResetPassword = ({ otp, email }) => {
 					</p>
 				</div>
 			</form>
-		</main>
+		</>
 	);
 };
 

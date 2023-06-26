@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 module.exports = {
 	content: [
 		'./app/**/*.{js,ts,jsx,tsx,mdx}',
@@ -9,10 +12,14 @@ module.exports = {
 	],
 	theme: {
 		screens: {
-			'2xl': '1440px',
+			xs: '480px',
+			...defaultTheme.screens,
 		},
-
 		extend: {
+			screens: {
+				'2xl': '1440px',
+				md: '783px',
+			},
 			fontFamily: {
 				nunito: ['var(--font-nunito)'],
 			},

@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { postData } from '@/dataFetching/dataFetching';
-import SignUpType from '@/components/SignUpType';
+import SignUpType from '@/app/register/SignUpType';
 import FormInput from '@/components/reuseableComp/FormInput';
 import FormPasswordInput from '@/components/reuseableComp/FormPasswordInput';
 import Button from '@/components/reuseableComp/Button';
@@ -60,7 +60,7 @@ export default function SignUp() {
 		<main className="w-full h-fit mx-auto mt-20">
 			<form
 				onSubmit={handleSubmit}
-				className="w-[486px] h-fit m-auto flex flex-col justify-center items-center gap-4"
+				className="w-11/12 sm:w-[486px] h-fit m-auto flex flex-col justify-center items-center gap-4"
 			>
 				<div className="w-full">
 					<p className="text-sm text-[#686868] mb-2">Sign up for free!</p>

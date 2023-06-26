@@ -1,17 +1,21 @@
 import Image from 'next/image';
-import GetStarted from './reuseableComp/GetStarted';
+import GetStarted from '../../components/reuseableComp/GetStarted';
 
 const SubscriptionPlan = ({ subPlan }) => {
 	const { name, price, duration_type, features } = subPlan;
 
 	return (
-		<div className="w-[calc(90%_/_3)] bg-white rounded-lg px-4 py-10">
-			<p className="text-black text-lg font-semibold">{name}</p>
+		<div className="w-full xs:w-3/4 md:w-[calc(100%_/_3)] lg:w-[calc(90%_/_3)] bg-white rounded-lg px-4 py-10">
+			<p className="text-black text-2xl md:text-lg text-center md:text-left font-semibold">
+				{name}
+			</p>
 
 			{price === 0 ? (
-				<p className="my-7 text-black text-4xl font-bold">Free</p>
+				<p className="my-7 text-black text-4xl text-center md:text-left font-bold">
+					Free
+				</p>
 			) : (
-				<p className="my-7 text-black">
+				<p className="my-7 text-black text-center md:text-left">
 					<span className="text-sm relative bottom-5">NGN</span>
 					<span className=" text-4xl font-bold">
 						{price.toLocaleString()}

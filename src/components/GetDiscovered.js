@@ -3,17 +3,21 @@ import Card from './reuseableComp/Card';
 
 const GetDiscovered = () => {
 	return (
-		<div className="w-full h-auto mx-auto my-20 py-5 bg-[#FCFAFF] rounded-[24px]">
-			<div className="w-full mx-auto flex justify-between items-center relative">
-				<img
-					src="/assets/phone.png"
-					// width={621}
-					// height={700}
-					// priority
-					alt="mobile phone"
-				/>
-				<div className=" w-full my-auto h-fit absolute left-[720px] inset-y-0 overscroll-none">
-					<div className="w-fit my-auto h-fit flex flex-col gap-5">
+		<div className="w-full h-auto mx-auto my-20 py-3 xl:py-5 bg-[#FCFAFF] rounded-[24px]">
+			<div className="w-full mx-auto flex flex-col md:flex-row justify-center md:justify-between items-center relative">
+				<div className="w-full md:w-2/3 xl:w-fit flex flex-col justify-center items-center">
+					{/* <img src="/assets/phone.png" alt="mobile phone" /> */}
+					<Image
+						src="/assets/phone.png"
+						alt="dutiful mobile phone"
+						width={1073}
+						height={852}
+						priority
+					/>
+				</div>
+
+				<div className="w-full xs:w-3/4 sm:w-1/2 xl:w-full my-auto h-fit relative xl:absolute xl:left-[720px] xl:inset-y-0 overscroll-none">
+					<div className="w-full xl:w-fit my-auto h-fit flex flex-col items-center gap-7 md:gap-5">
 						<Card
 							title={'Get Discovered'}
 							descriptions={
@@ -23,7 +27,7 @@ const GetDiscovered = () => {
 							discovered={'discovered'}
 						/>
 
-						<div className="relative left-[-85px] z-10">
+						<div className="relative sm:left-[-85px] z-10">
 							<Card
 								title={'Instant Chat'}
 								descriptions={

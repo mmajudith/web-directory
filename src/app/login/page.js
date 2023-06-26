@@ -46,7 +46,7 @@ export default function Login() {
 		<main className="w-full h-fit mx-auto mt-20">
 			<form
 				onSubmit={handleSubmit}
-				className="w-[486px] h-fit m-auto flex flex-col justify-center items-center gap-4"
+				className="w-11/12 sm:w-[486px] h-fit m-auto flex flex-col justify-center items-center gap-4"
 			>
 				<div className="w-full mb-8">
 					<p className="text-sm text-[#686868] mb-2">Jump right back in</p>

@@ -17,7 +17,7 @@ const FormPasswordInput = ({ id, value, handleChange, forLabel }) => {
 			</label>
 			<div className="w-full relative">
 				<input
-					className="w-full h-12 pl-5 bg-[#F8FAFD] outline-none border border-solid border-[#E7EAF1] rounded-md"
+					className="w-full h-10 xs:h-12 pl-5 bg-[#F8FAFD] outline-none border border-solid border-[#E7EAF1] rounded-md"
 					type={`${!isVisible ? 'password' : 'text'}`}
 					value={value}
 					onChange={handleChange}
@@ -26,7 +26,7 @@ const FormPasswordInput = ({ id, value, handleChange, forLabel }) => {
 				/>
 
 				<p
-					className="absolute right-5 top-4 cursor-pointer"
+					className="absolute right-5 top-[12px] xs:top-4 cursor-pointer"
 					onClick={handleShowHidePass}
 				>
 					{!isVisible ? (
