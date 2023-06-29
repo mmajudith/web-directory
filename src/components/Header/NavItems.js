@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-const NavItems = ({ toggleMenu, screenWidth }) => {
+const NavItems = () => {
 	return (
 		<ul
 			className={`flex flex-col md:flex-row justify-center md:justify-between items-center gap-4 

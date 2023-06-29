@@ -6,7 +6,6 @@ const GetDiscovered = () => {
 		<div className="w-full h-auto mx-auto my-20 py-3 xl:py-5 bg-[#FCFAFF] rounded-[24px]">
 			<div className="w-full mx-auto flex flex-col md:flex-row justify-center md:justify-between items-center relative">
 				<div className="w-full md:w-2/3 xl:w-fit flex flex-col justify-center items-center">
-					{/* <img src="/assets/phone.png" alt="mobile phone" /> */}
 					<Image
 						src="/assets/phone.png"
 						alt="dutiful mobile phone"
