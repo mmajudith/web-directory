@@ -21,7 +21,7 @@ module.exports = {
 				md: '783px',
 			},
 			fontFamily: {
-				nunito: ['var(--font-nunito)'],
+				kumbh: ['Kumbh Sans'],
 			},
 			colors: {
 				purple: '#603F8B',

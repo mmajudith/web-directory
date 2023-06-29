@@ -42,12 +42,18 @@ export default function ForgotPassword() {
 		try {
 			const resendEmail = await postData('auth/password/email', { email });
 			console.log(resendEmail);
+			if(resendEmail !== 'Failed to post data'){
+				setSendEmail(true);
+				setDisable(false);
+				setForPassword(false);
+			}else{
+				alert('Error sending email please check your internet connection.');
+				setDisable(false);
+			}
 
-			setSendEmail(true);
-			setDisable(false);
-			setForPassword(false);
 		} catch (error) {
 			console.log(error, 'err resending email');
+			alert('Error sending email please check your internet connection.');
 			setDisable(false);
 		}
 	};
@@ -100,6 +106,8 @@ export default function ForgotPassword() {
 						handleChange={(e) => setEmail(e.target.value)}
 						forLabel={'Email'}
 						imgIcon={'/assets/email.png'}
+						pattern={"^[^ ]+@[^ ]+\.[a-z]{2,63}$"}
+						title={'Please enter valid email address.'}
 					/>
 
 					<div className="w-full mt-8">

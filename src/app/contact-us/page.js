@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { postData } from '@/dataFetching/dataFetching';
+import { handlePostSubmit } from '@/dataFetching/dataFetching';
 
 import Card from '@/components/reuseableComp/Card';
 import FormInput from '@/components/reuseableComp/FormInput';
@@ -31,15 +31,12 @@ export default function ContactUs() {
 		e.preventDefault();
 
 		setDisable(true);
-		try {
-			const receivedMessage = await postData('contact', { ...contact });
-			console.log(receivedMessage);
-			alert('We have received your message.');
-			setDisable(false);
-		} catch (error) {
-			console.log(error, 'err contacting us');
-			setDisable(false);
-		}
+		await handlePostSubmit(
+			'contact', contact, 
+			'Error receiving your message please check your internet connection.',
+			'We have received your message.',
+			setDisable
+		);
 	};
 
 	return (
@@ -87,6 +84,8 @@ export default function ContactUs() {
 					value={contact.name}
 					handleChange={(e) => handleChange(e)}
 					forLabel={'Full name'}
+					pattern={"^[^\s]+( [^\s]+)+$"}
+					title={'Please enter valid full name'}
 				/>
 				<FormInput
 					id={'email'}
@@ -94,6 +93,8 @@ export default function ContactUs() {
 					value={contact.email}
 					handleChange={(e) => handleChange(e)}
 					forLabel={'Email'}
+					pattern={"^[^ ]+@[^ ]+\.[a-z]{2,63}$"}
+					title={'Please enter valid email address.'}
 				/>
 				<FormInput
 					id={'business_type'}
@@ -102,6 +103,8 @@ export default function ContactUs() {
 					handleChange={(e) => handleChange(e)}
 					forLabel={'Business type'}
 					optional={'(Optional)'}
+					// pattern={'[A-Za-z0-9]'}
+					// title={'Texts too short or long'}
 				/>
 
 				<FormInput
@@ -111,6 +114,8 @@ export default function ContactUs() {
 					handleChange={(e) => handleChange(e)}
 					forLabel={'Subject'}
 					imgIcon={'/assets/arrow-down.png'}
+					// pattern={'[A-Za-z0-9]'}
+					// title={'Texts too short or long'}
 				/>
 
 				<FormTextArea

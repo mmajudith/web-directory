@@ -44,9 +44,15 @@ const OTPConfirm = ({
 		try {
 			const comfirmOtp = await postData('auth/password/verify', { ...details });
 			console.log(comfirmOtp);
-			alert('OTP confirmed.');
-			setSendOTP(false);
-			setResetPass(true);
+			if(comfirmOtp !== 'Failed to post data'){
+				alert('OTP confirmed.');
+				setSendOTP(false);
+				setResetPass(true);
+			}else{
+				alert('Error sending OTP please check your internet connection.');
+				setDisable(false);
+			}
+			
 		} catch (error) {
 			console.log(error, 'err confirming otp');
 			setDisable(false);

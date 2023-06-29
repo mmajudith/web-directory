@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { postData } from '@/dataFetching/dataFetching';
+import { handlePostSubmit } from '@/dataFetching/dataFetching';
 import FormInput from '@/components/reuseableComp/FormInput';
 import FormPasswordInput from '@/components/reuseableComp/FormPasswordInput';
 import Button from '@/components/reuseableComp/Button';
@@ -27,19 +27,14 @@ export default function Login() {
 		e.preventDefault();
 
 		setDisable(true);
-		try {
-			const userLogin = await postData('auth/login', { ...loginData });
-			console.log(userLogin);
-			if (userLogin.error) {
-				setDisable(false);
-				return alert(userLogin.error);
-			}
-			alert('Successfully login.');
-			router.push('/');
-		} catch (error) {
-			console.log(error, 'err loging in');
-			setDisable(false);
-		}
+		await handlePostSubmit(
+			'auth/login', loginData, 
+			'Wrong credentials',
+			'Successfully login.',
+			setDisable,
+			'/',
+			router,
+		);
 	};
 
 	return (
@@ -59,6 +54,8 @@ export default function Login() {
 					value={loginData.email}
 					handleChange={(e) => handleChange(e)}
 					forLabel={'Email'}
+					pattern={"^[^ ]+@[^ ]+\.[a-z]{2,63}$"}
+					title={'Please enter valid email address.'}
 				/>
 				<FormPasswordInput
 					id={'password'}

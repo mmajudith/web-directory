@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { postData } from '@/dataFetching/dataFetching';
+import { handlePostSubmit } from '@/dataFetching/dataFetching';
 import SignUpType from '@/app/register/SignUpType';
 import FormInput from '@/components/reuseableComp/FormInput';
 import FormPasswordInput from '@/components/reuseableComp/FormPasswordInput';
@@ -34,7 +34,7 @@ export default function SignUp() {
 		e.preventDefault();
 
 		if (inputsData.password !== inputsData.reEnterPassword) {
-			return alert('Comfirm password must be the same');
+			return alert('Comfirm password must be the same with password');
 		}
 		const { name, email, phone, password } = inputsData;
 		const details = {
@@ -45,15 +45,14 @@ export default function SignUp() {
 		};
 
 		setDisable(true);
-		try {
-			const newUser = await postData('auth/register', details);
-			console.log(newUser);
-			alert('Successfully signed up.');
-			router.push('/contact-us');
-		} catch (error) {
-			console.log(error, 'err signing in');
-			setDisable(false);
-		}
+		await handlePostSubmit(
+			'auth/register', details, 
+			'Error signing up please check your internet connection.',
+			'Successfully signed up.',
+			setDisable,
+			'/contact-us',
+			router,
+		);
 	};
 
 	return (
@@ -75,6 +74,8 @@ export default function SignUp() {
 					value={inputsData.name}
 					handleChange={(e) => handleChange(e)}
 					forLabel={'Full name'}
+					pattern={"^[^\s]+( [^\s]+)+$"}
+					title={'Please enter valid full name'}
 				/>
 
 				<FormInput
@@ -83,6 +84,8 @@ export default function SignUp() {
 					value={inputsData.email}
 					handleChange={(e) => handleChange(e)}
 					forLabel={'Email'}
+					pattern={"^[^ ]+@[^ ]+\.[a-z]{2,63}$"}
+					title={'Please enter valid email address.'}
 				/>
 
 				<FormInput
@@ -91,6 +94,8 @@ export default function SignUp() {
 					value={inputsData.phone}
 					handleChange={(e) => handleChange(e)}
 					forLabel={'Phone number'}
+					pattern={"[0-9]{9,15}"}
+					title={'Please enter valid phone number'}
 				/>
 
 				<FormPasswordInput

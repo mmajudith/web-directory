@@ -1,6 +1,11 @@
 import { useState } from 'react';
 
-const FormPasswordInput = ({ id, value, handleChange, forLabel }) => {
+const FormPasswordInput = ({
+	id,
+	value,
+	handleChange,
+	forLabel,
+}) => {
 	const [isVisible, setIsVisible] = useState(false);
 
 	const handleShowHidePass = () => {

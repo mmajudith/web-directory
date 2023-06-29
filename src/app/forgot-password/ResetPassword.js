@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { postData } from '@/dataFetching/dataFetching';
+import { handlePostSubmit } from '@/dataFetching/dataFetching';
 import FormPasswordInput from '@/components/reuseableComp/FormPasswordInput';
 import Button from '@/components/reuseableComp/Button';
 
@@ -26,22 +26,24 @@ const ResetPassword = ({ otp, email }) => {
 	const handleResetSubmit = async (e) => {
 		e.preventDefault();
 
+		if (resetPassword.password !== resetPassword.confrim_password) {
+			return alert('Comfirm password must be the same with reset password');
+		}
+
 		const { password } = resetPassword;
 		const details = { otp, email, password };
+
 		setDisable(true);
 
-		try {
-			const changedPassword = await postData('auth/password/reset', {
-				...details,
-			});
-			console.log(changedPassword);
+		await handlePostSubmit(
+			'auth/password/reset', details, 
+			'Error changing password please check your internet connection.',
+			'Password successfully changed.',
+			setDisable,
+			'/login',
+			router,
+		);
 
-			alert('Password successfully changed.');
-			router.push('/login');
-		} catch (error) {
-			console.log(error, 'err changing password');
-			setDisable(false);
-		}
 	};
 
 	return (

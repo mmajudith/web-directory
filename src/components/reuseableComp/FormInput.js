@@ -6,6 +6,8 @@ const FormInput = ({
 	forLabel,
 	optional,
 	imgIcon,
+	pattern,
+	title,
 }) => {
 	return (
 		<div className="w-full flex flex-col justify-start gap-1 relative">
@@ -23,6 +25,8 @@ const FormInput = ({
 				onChange={handleChange}
 				id={id}
 				required
+				pattern={pattern}
+				title={title}
 			/>
 			{imgIcon && (
 				<img
