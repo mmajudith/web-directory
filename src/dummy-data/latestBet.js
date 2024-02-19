@@ -1,0 +1,42 @@
+export const latestBets = [
+	{
+		avatar: '/assets/bet-avatar.png',
+		address: '0xed0....4681',
+		eSport: 'Esport',
+		smartTelemath: 'Smart VS Telemath',
+		bestBet: 50.663,
+		time: '11:25',
+	},
+	{
+		avatar: '/assets/bet-avatar.png',
+		address: '0xed0....4681',
+		eSport: 'Esport',
+		smartTelemath: 'Smart VS Telemath',
+		bestBet: 50.663,
+		time: '11:25',
+	},
+	{
+		avatar: '/assets/bet-avatar.png',
+		address: '0xed0....4681',
+		eSport: 'Esport',
+		smartTelemath: 'Smart VS Telemath',
+		bestBet: 50.663,
+		time: '11:25',
+	},
+	{
+		avatar: '/assets/bet-avatar.png',
+		address: '0xed0....4681',
+		eSport: 'Esport',
+		smartTelemath: 'Smart VS Telemath',
+		bestBet: 50.663,
+		time: '11:25',
+	},
+	{
+		avatar: '/assets/bet-avatar.png',
+		address: '0xed0....4681',
+		eSport: 'Esport',
+		smartTelemath: 'Smart VS Telemath',
+		bestBet: 50.663,
+		time: '11:25',
+	},
+];
