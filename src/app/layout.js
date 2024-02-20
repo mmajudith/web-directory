@@ -1,8 +1,5 @@
-'use client';
-
 import './globals.css';
-import { Provider } from 'react-redux';
-import { store } from '@/redux/store/store';
+import Providers from './providers/provider';
 import Header from '@/components/Header/Header';
 import Footer from '@/components/Footer/Footer';
 
@@ -15,11 +12,11 @@ export default function RootLayout({ children }) {
 	return (
 		<html lang="en">
 			<body className="max-w-[1440px] w-full h-auto m-auto text-base font-kumbh font-normal bg-white not-italic">
-				<Provider store={store}>
+				<Providers>
 					<Header />
 					{children}
 					<Footer />
-				</Provider>
+				</Providers>
 			</body>
 		</html>
 	);

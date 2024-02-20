@@ -8,7 +8,6 @@ import { Web3 } from 'web3';
 
 const Header = () => {
 	const { isAddress } = useSelector((state) => state.modalSlice);
-	console.log(isAddress, 'adrrrrrrrrrrrrr')
 	const [address, setAddress] = useState('');
 	const dispatch = useDispatch();
 
